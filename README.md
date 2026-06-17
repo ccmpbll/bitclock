@@ -43,10 +43,6 @@ Five values are displayed on the clock face and in the web admin:
 
 **PCB rev3a only** — the first and only commercially sold revision of the bitclock hardware (ESP32-S3, e-ink display). Earlier prototype revisions (rev1 ESP32-C3, Seeed ESP32-S3) are not supported by this fork and their build targets have been removed.
 
-## Firmware development
-
-See [bitclock-fw/](bitclock-fw/) for build and flash instructions. Build from `bitclock-fw/target-rev2-esp32s3/` (`BOARD_TARGET 2`).
-
 ## Cloning
 
 This repo uses git submodules.
