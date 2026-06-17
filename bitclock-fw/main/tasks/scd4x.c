@@ -21,8 +21,6 @@ static uint16_t ppm;
 static const uint8_t kStartPeriodicMeasurement[] = {0x21,
                                                     0xb1}; // No execution time
 static const uint8_t kReadMeasurement[] = {0xec, 0x05};    // 1ms exceution time
-static const uint8_t kStopPeriodicMeasurement[] = {
-    0x3f, 0x86}; // 500ms execution time
 
 static uint8_t kReadResponse[9];
 
@@ -51,25 +49,6 @@ static void scd4x_start_periodic_measurement() {
     ret = i2c_master_transmit(device_handle,
                               kStartPeriodicMeasurement,         // write buffer
                               sizeof(kStartPeriodicMeasurement), // write size
-                              1000 // xfer_timeout_ms
-    );
-    if (ret != ESP_OK) {
-      ESP_LOGE(TAG, "Failed to transmit to scd4x: %d", ret);
-    }
-
-    xSemaphoreGive(i2c_semaphore);
-  } else {
-    ESP_LOGE(TAG, "Failed to grab i2c lock.");
-  }
-}
-
-static void scd4x_stop_periodic_measurement() {
-  static esp_err_t ret;
-  if (xSemaphoreTake(i2c_semaphore, pdMS_TO_TICKS(1000))) {
-    ESP_LOGI(TAG, "Stopping periodic measurement...");
-    ret = i2c_master_transmit(device_handle,
-                              kStopPeriodicMeasurement,         // write buffer
-                              sizeof(kStopPeriodicMeasurement), // write size
                               1000 // xfer_timeout_ms
     );
     if (ret != ESP_OK) {
