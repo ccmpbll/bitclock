@@ -63,25 +63,6 @@ static void scd4x_start_periodic_measurement() {
   }
 }
 
-static void scd4x_stop_periodic_measurement() {
-  static esp_err_t ret;
-  if (xSemaphoreTake(i2c_semaphore, pdMS_TO_TICKS(1000))) {
-    ESP_LOGI(TAG, "Stopping periodic measurement...");
-    ret = i2c_master_transmit(device_handle,
-                              kStopPeriodicMeasurement,         // write buffer
-                              sizeof(kStopPeriodicMeasurement), // write size
-                              1000 // xfer_timeout_ms
-    );
-    if (ret != ESP_OK) {
-      ESP_LOGE(TAG, "Failed to transmit to scd4x: %d", ret);
-    }
-
-    xSemaphoreGive(i2c_semaphore);
-  } else {
-    ESP_LOGE(TAG, "Failed to grab i2c lock.");
-  }
-}
-
 esp_err_t scd4x_read() {
   static esp_err_t ret;
   if (xSemaphoreTake(i2c_semaphore, pdMS_TO_TICKS(1000))) {
