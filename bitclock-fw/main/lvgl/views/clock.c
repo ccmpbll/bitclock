@@ -18,7 +18,7 @@ lv_helper_view_mode_clock_data_t lv_helper_view_mode_clock_data;
 #define LEFT_PAD      6
 
 // Left panel vertical layout
-#define TIME_H        60
+#define TIME_H        52
 #define SUBTEXT_H     16
 #define GAP_TIME_DAY  16
 #define GAP_DAY_DATE  8
