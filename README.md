@@ -16,7 +16,8 @@ A fork of [goat-hill/bitclock](https://github.com/goat-hill/bitclock) — an ope
 
 ### First install (USB)
 
-Download `bitclock-redux-full-<version>.bin` from the [latest release](https://github.com/ccmpbll/bitclock-redux/releases/latest) and flash it at offset `0x0` using the [Espressif web flasher](https://espressif.github.io/esptool-js/) or [NodeMCU PyFlasher](https://github.com/marcelstoer/nodemcu-pyflasher). The ESP32-S3 has native USB — no driver needed (shows as `/dev/cu.usbmodem*` on macOS).
+Download `bitclock-redux-full-<version>.bin` from the [latest release](https://github.com/ccmpbll/bitclock-redux/releases/latest) and flash it at offset `0x0` using the [Espressif web flasher](https://espressif.github.io/esptool-js/) or [Adafruit WebSerial ESPTool
+](https://adafruit.github.io/Adafruit_WebSerial_ESPTool/). The ESP32-S3 has native USB — no driver needed (shows as `/dev/cu.usbmodem*` on macOS).
 
 ### OTA update
 
