@@ -5,7 +5,7 @@
 A fork of [goat-hill/bitclock](https://github.com/goat-hill/bitclock) — an open-source e-ink desk clock and air quality monitor. This fork replaces the Bluetooth/BLE configurator with an on-device web admin and removes the weather feature to make it a clock-only device.
 
 **Changes from upstream:**
-- **Web admin** at `http://bitclock.local` — configure Wi-Fi, timezone, NTP server, and OTA firmware updates from any browser; no app or Bluetooth required
+- **Web admin** at `http://bitclock.local` — configure Wi-Fi, hostname, timezone, NTP server, and OTA firmware updates from any browser; no app or Bluetooth required
 - **AP provisioning** — on first boot (or after a failed Wi-Fi connection), the device broadcasts a `bitclock-setup` Wi-Fi network with a setup page at `192.168.4.1`
 - **Sensor readings on the clock face** — temperature, humidity, CO₂, VOC index, and NOx index displayed across the top of the display
 - **MQTT + Home Assistant** — publishes all sensor readings to an MQTT broker; auto-discovery creates entities in Home Assistant automatically
@@ -27,7 +27,7 @@ Download `bitclock-redux-app-<version>.bin` from the [latest release](https://gi
 
 1. On first boot, connect to the `bitclock-setup` Wi-Fi network
 2. Open `http://192.168.4.1` in a browser and enter your Wi-Fi credentials
-3. The device reboots into your network and is accessible at `http://bitclock.local`
+3. The device reboots into your network and is accessible at `http://bitclock.local` (or `http://<hostname>.local` if you change the hostname in the web admin)
 
 ## Sensor readings
 
